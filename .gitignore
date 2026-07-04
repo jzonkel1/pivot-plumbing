@@ -1,1 +1,6 @@
-IMG_8757.jpeg
+# Source assets, raw phone photos, and Google Drive archives — NOT part of the deploy
+_source/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db

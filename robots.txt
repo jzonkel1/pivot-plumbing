@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Keep the hidden Netlify form-definition page out of search results
+Disallow: /__forms.html
+
+Sitemap: https://pivotplumbing.biz/sitemap.xml
