@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=6" />
+<link rel="stylesheet" href="styles.css?v=7" />
 <link rel="canonical" href="https://pivotplumbing.biz/gallery.html" />
 <!-- favicons -->
 <link rel="icon" href="favicon.ico" sizes="any" />
@@ -103,8 +103,8 @@
 
 <!-- page hero -->
 <section class="page-hero">
-  <!-- hand-drawn clean pipe manifold — joined tight, no leaks, ink-sketch style -->
-  <div class="sketch-deco sketch-deco--wide" aria-hidden="true">
+  <!-- hand-drawn P-trap under a sink — the iconic plumbing curve, ink-sketch style -->
+  <div class="sketch-deco sketch-deco--xl" aria-hidden="true">
     <svg viewBox="0 0 240 200" fill="none">
       <defs>
         <filter id="fdR1" x="-20%" y="-20%" width="140%" height="140%">
@@ -121,44 +121,62 @@
         </filter>
       </defs>
       <g class="fd-sketch" filter="url(#fdR1)">
+        <!-- sink bottom + drain flange -->
+        <path d="M98 16 C118 14.8 140 15 162 15.4 C178 15.7 192 15.4 204 16.2" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+        <g stroke="rgba(255,255,255,.45)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M130.5 16.5 C130.5 20.5 138 23.2 150 23.2 C161.5 23.2 169.5 20.6 169.5 16.8"/>
+          <path d="M139.5 20.8 C141 22.2 145 23 150 23 C155 23 159 22.2 160.5 20.8"/>
+        </g>
         <g stroke="rgba(255,255,255,.52)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-          <!-- main run -->
-          <path d="M16 96.5 C50 95.4 90 95.8 130 96.2 C165 96.5 200 96 224 96.8"/>
-          <path d="M16 111.5 C50 112.6 92 112.2 132 111.8 C166 111.5 200 112 224 111.2"/>
-          <path d="M16 96.5 C14.5 101 14.5 107 16 111.5"/>
-          <!-- right end flange -->
-          <path d="M218 95 C216.8 100 216.8 108 218.2 113"/>
-          <path d="M224.5 94.2 C223.3 100 223.3 108.5 224.7 113.8"/>
-          <!-- tee up to a capped flange -->
-          <path d="M69 96 C68.6 82 68.8 66 69.4 52"/>
-          <path d="M84 96 C84.4 82 84.2 66 83.6 52"/>
-          <path d="M62 45.5 C71 44 81 44 90.5 45.3"/>
-          <path d="M60.5 51.5 C70 49.8 82 49.8 92.5 51.2"/>
-          <!-- valve stem -->
-          <path d="M153 96 C152.8 91 153 86.5 153.4 83"/>
-          <path d="M163 96 C163.2 91 163 86.5 162.6 83"/>
+          <!-- tailpiece down from the sink -->
+          <path d="M143 23.5 C142.6 44 142.7 66 143 88"/>
+          <path d="M157 23.5 C157.4 44 157.3 66 157 88"/>
+          <!-- slip nut at the trap inlet -->
+          <path d="M138.5 88 C137.8 92 137.8 96 138.6 100"/>
+          <path d="M161.5 88 C162.2 92 162.2 96 161.4 100"/>
+          <path d="M138.5 88 C146 86.8 154 86.8 161.5 88"/>
+          <path d="M138.6 100 C146 101.2 154 101.2 161.4 100"/>
+          <path d="M146 88.6 C145.8 92 145.8 96 146.1 99.5 M154 88.6 C154.2 92 154.2 96 153.9 99.5"/>
+          <!-- into the trap -->
+          <path d="M143 100 C142.8 107 142.9 115 143 122"/>
+          <path d="M157 100 C157.2 107 157.1 115 157 122"/>
+          <!-- the U-bend -->
+          <path d="M157 122 C158 152 100 152 101 122"/>
+          <path d="M143 122 C143.5 138 114.5 138 115 122"/>
+          <!-- left riser -->
+          <path d="M101 122 C100.8 118 100.8 114 101 110"/>
+          <path d="M115 122 C115.2 118 115.2 114 115 110"/>
+          <!-- elbow into the wall arm -->
+          <path d="M101 110 C100.5 101 95 92.5 84 92.3"/>
+          <path d="M115 110 C114.5 106.5 111 106.2 103 106.1"/>
+          <!-- horizontal arm to the wall -->
+          <path d="M84 92.3 C64 91.4 44 91.8 26 92.6"/>
+          <path d="M103 106.1 C78 107 48 106.6 26 105.9"/>
+          <!-- slip nut on the arm -->
+          <path d="M89 90.5 C88.2 95 88.2 103 89.2 107.8"/>
+          <path d="M95.5 90.3 C94.7 95 94.7 103.4 95.7 108"/>
+          <!-- wall escutcheon plate -->
+          <path d="M22 84.5 C20.6 91 20.6 107 22 113.5"/>
+          <path d="M28 83.8 C26.6 91 26.6 107.5 28 114.2"/>
+          <path d="M22 84.5 C24 83 26.2 82.9 28 83.8"/>
+          <path d="M22 113.5 C24 115 26.2 115.1 28 114.2"/>
         </g>
-        <!-- fitting seams & coupling rings -->
-        <g stroke="rgba(255,255,255,.4)" stroke-width="2.2" stroke-linecap="round">
-          <path d="M66 93.5 L87 93.2"/>
-          <path d="M68.2 64.5 C67.6 68 67.6 73 68.4 76.5 M85 64.3 C85.6 68 85.6 73 84.8 76.4"/>
-          <path d="M47 95.8 C45.8 100 45.8 107 47.2 112 M53.5 95.6 C52.3 100 52.3 107.5 53.7 112.2"/>
-          <path d="M194 96 C192.8 100 192.8 107 194.2 111.6 M200.5 95.8 C199.3 100 199.3 107 200.7 111.4"/>
-        </g>
-        <!-- coral valve handwheel -->
-        <path d="M141.5 80 C143 74.5 152 71.8 158.5 72 C165 72.2 173 75 174.3 79.6 C173 84 164 86.6 157.5 86.4 C151 86.2 143.5 84 141.5 80 Z" fill="rgba(242,75,84,.78)" stroke="rgba(255,255,255,.55)" stroke-width="2.2" stroke-linejoin="round"/>
-        <path d="M150 78.4 L155 82 M160 76.8 L164.5 80.4" stroke="rgba(120,22,30,.55)" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- coral cleanout plug at the belly of the trap -->
+        <path d="M122 146 C121.4 151.5 122.2 157 124.5 160.5 C128 162.3 131.8 162.1 134.8 160 C136.8 156.5 137 151 136.3 146 C131.5 147.4 126.7 147.4 122 146 Z" fill="rgba(242,75,84,.78)" stroke="rgba(255,255,255,.55)" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M126 152 L131.5 156.2" stroke="rgba(120,22,30,.55)" stroke-width="1.6" stroke-linecap="round"/>
         <!-- hatch shading -->
         <g stroke="rgba(255,255,255,.26)" stroke-width="1.7" stroke-linecap="round">
-          <path d="M28 110.5 L32.5 104.5 M37 110.8 L41.5 104.8 M100 110.5 L104.5 104.5 M110 110.8 L114.5 104.8 M120 110.6 L124.5 104.6 M176 110.5 L180.5 104.5 M185 110.8 L189.5 104.8"/>
-          <path d="M70.5 60 L76.5 56 M70.8 66.5 L76.8 62.5"/>
+          <path d="M144.5 40 L150.5 35.5 M144.5 53 L150.5 48.5 M144.5 66 L150.5 61.5"/>
+          <path d="M150 137.5 L154.5 143 M142 143 L145.5 149 M132.5 146 L134.5 152.5"/>
+          <path d="M40 105 L44.5 99.5 M52 105.3 L56.5 99.8 M64 105 L68.5 99.6"/>
+          <path d="M23 89.5 L29.3 88.3 M22.6 99 L28.9 99 M23 108.5 L29.5 109.6"/>
         </g>
       </g>
       <!-- sparkle ticks — "super clean" (twinkle in turn) -->
-      <g stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round">
-        <path class="fd-shine fd-shine1" d="M104 69 C104.2 74 104.2 79 104 83 M97 76 C101.5 76.2 106.5 76.2 110.5 76"/>
-        <path class="fd-shine fd-shine2" d="M183 58 C183.2 62 183.2 66 183 69.5 M177.5 63.8 C181 64 185 64 188.5 63.8"/>
-        <path class="fd-shine fd-shine3" d="M36 76.5 C36.2 80 36.2 83.5 36 86.5 M31.5 81.5 C34.5 81.7 38 81.7 40.5 81.5"/>
+      <g stroke="rgba(255,255,255,.85)" stroke-width="2.2" stroke-linecap="round">
+        <path class="fd-shine fd-shine1" d="M185 31 C185.2 36.5 185.2 42 185 46.5 M177.5 38.8 C182.5 39 188 39 191.8 38.8"/>
+        <path class="fd-shine fd-shine2" d="M95 152.5 C95.2 157.5 95.2 162.5 95 166.5 M88.5 159.5 C92.5 159.7 97.5 159.7 101.5 159.5"/>
+        <path class="fd-shine fd-shine3" d="M45 63 C45.2 67.5 45.2 72 45 75.8 M38.8 69.5 C42.5 69.7 47.5 69.7 51.2 69.5"/>
       </g>
     </svg>
   </div>

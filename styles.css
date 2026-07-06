@@ -726,6 +726,7 @@
   .faucet-deco,.sketch-deco{position:absolute;top:50%;right:6%;transform:translateY(-50%);width:min(250px,34%);z-index:1;pointer-events:none}
   .faucet-deco svg,.sketch-deco svg{width:100%;height:auto;display:block;overflow:visible}
   .sketch-deco--wide{width:min(320px,40%)}
+  .sketch-deco--xl{width:min(350px,42%)}
   /* hand-drawn "boil": swap between three turbulence seeds like redrawn frames */
   .fd-sketch{animation:fd-boil 1.1s steps(1) infinite}
   @keyframes fd-boil{
@@ -851,6 +852,7 @@
   @media(max-width:860px){
     .faucet-deco,.sketch-deco{top:14px;right:8px;bottom:auto;transform:none;width:clamp(108px,28vw,150px);opacity:.8}
     .sketch-deco--wide{width:clamp(130px,34vw,180px)}
+    .sketch-deco--xl{width:clamp(140px,36vw,190px)}
   }
 
   /* ============================================================
