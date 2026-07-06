@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=4" />
+<link rel="stylesheet" href="styles.css?v=6" />
 <link rel="canonical" href="https://pivotplumbing.biz/contact.html" />
 <!-- favicons -->
 <link rel="icon" href="favicon.ico" sizes="any" />
@@ -234,42 +234,97 @@
         </div>
       </div>
 
-      <form class="form-card reveal" name="quote-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return submitForm(event)">
+      <form class="qwiz reveal" id="quoteWizard" name="quote-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="quote-request">
         <p hidden aria-hidden="true" style="display:none"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-        <h3>Request service</h3>
-        <p class="sub">A licensed master plumber gets back to you fast — not a call center. No obligation. For emergencies, please call.</p>
-        <div class="row2">
-          <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" name="name" required autocomplete="name" placeholder="Your name"></div>
-          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" type="tel" name="phone" required autocomplete="tel" placeholder="(361) 000-0000"></div>
+        <input type="hidden" name="service" id="qw-service">
+        <input type="hidden" name="property" id="qw-property">
+        <input type="hidden" name="urgency" id="qw-urgency">
+
+        <div class="qwiz-head">
+          <div class="qwiz-progress"><span></span></div>
+          <div class="qwiz-count">Step <b>1</b> of 5</div>
         </div>
-        <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
-        <div class="row2">
-          <div class="field">
-            <label for="c-service">Service needed</label>
-            <select id="c-service" name="service">
-              <option>Residential repair</option>
-              <option>Commercial repair</option>
-              <option>Bathroom remodeling</option>
-              <option>Kitchen remodeling</option>
-              <option>Water heater repair / install</option>
-              <option>Gas line repair / install</option>
-              <option>General service repair</option>
-              <option>Drain unclog &amp; repair</option>
-              <option>Emergency</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="c-city">City</label>
-            <select id="c-city" name="city">
-              <option>Flour Bluff</option><option>Corpus Christi</option><option>Portland</option><option>South Padre Island</option><option>Other</option>
-            </select>
+
+        <!-- Step 1 — what -->
+        <div class="qwiz-step active" data-step="1">
+          <h3>What do you need done?</h3>
+          <p class="qwiz-sub">Tap what fits closest — no wrong answer.</p>
+          <div class="qwiz-opts">
+            <button type="button" class="qwiz-opt" data-field="service" data-value="Leak or repair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>Leak or repair</button>
+            <button type="button" class="qwiz-opt" data-field="service" data-value="Water heater"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M9 7h6M12 14v4"/></svg>Water heater</button>
+            <button type="button" class="qwiz-opt" data-field="service" data-value="Drain or sewer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v9"/><path d="M6 11h12"/><path d="M7 11c0 5 2.2 8 5 8s5-3 5-8"/></svg>Drain or sewer</button>
+            <button type="button" class="qwiz-opt" data-field="service" data-value="Remodel or new install"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2"/><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M7 19l-1 2M18 19l1 2"/></svg>Remodel / install</button>
+            <button type="button" class="qwiz-opt" data-field="service" data-value="Gas line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>Gas line</button>
+            <button type="button" class="qwiz-opt" data-field="service" data-value="Something else"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Something else</button>
           </div>
         </div>
-        <div class="field"><label for="c-message">How can we help?</label><textarea id="c-message" name="message" placeholder="Briefly describe the issue…"></textarea></div>
-        <button type="submit" class="btn btn-primary">Request my free quote</button>
-        <p class="form-note">No obligation. We'll never share your info.<br>Licensed Master Plumber RMP-43866 · BBB A+ rated</p>
+
+        <!-- Step 2 — where -->
+        <div class="qwiz-step" data-step="2">
+          <h3>Where's the job?</h3>
+          <p class="qwiz-sub">So Chad knows what he's walking into.</p>
+          <div class="qwiz-opts">
+            <button type="button" class="qwiz-opt" data-field="property" data-value="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>My home</button>
+            <button type="button" class="qwiz-opt" data-field="property" data-value="Business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21v-6h6v6"/></svg>My business</button>
+          </div>
+        </div>
+
+        <!-- Step 3 — how soon -->
+        <div class="qwiz-step" data-step="3">
+          <h3>How soon do you need it?</h3>
+          <p class="qwiz-sub">No pressure — this just helps us schedule.</p>
+          <div class="qwiz-opts single">
+            <button type="button" class="qwiz-opt" data-field="urgency" data-value="Urgent — need it now"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>It's urgent</button>
+            <button type="button" class="qwiz-opt" data-field="urgency" data-value="Within a week"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Within a week</button>
+            <button type="button" class="qwiz-opt" data-field="urgency" data-value="Just getting a quote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Just getting a quote</button>
+          </div>
+        </div>
+
+        <!-- Step 4 — phone -->
+        <div class="qwiz-step" data-step="4">
+          <h3>Where should we text your quote?</h3>
+          <p class="qwiz-sub">A licensed master plumber texts you back fast — not a call center.</p>
+          <div class="qwiz-field">
+            <label for="qw-phone">Your mobile number</label>
+            <input id="qw-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(361) 000-0000">
+            <div class="qwiz-err" data-err="phone">Enter a phone number we can reach you at.</div>
+          </div>
+          <a class="qwiz-callout" href="tel:+13614602929"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span style="line-height:1.3">Urgent? Fastest is to call<br><b style="font-family:var(--body);font-size:1rem;color:#fff;letter-spacing:0">(361) 460-2929</b></span></a>
+          <div class="qwiz-nav">
+            <button type="button" class="qwiz-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Back</button>
+            <button type="button" class="btn btn-primary qwiz-next" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 5 — name + details -->
+        <div class="qwiz-step" data-step="5">
+          <h3>Last thing — your name?</h3>
+          <p class="qwiz-sub">So we know who we're texting.</p>
+          <div class="qwiz-field">
+            <label for="qw-name">Name</label>
+            <input id="qw-name" type="text" name="name" autocomplete="name" placeholder="Your name">
+            <div class="qwiz-err" data-err="name">We just need a name to reach out.</div>
+          </div>
+          <div class="qwiz-field">
+            <label for="qw-message">Anything else? <span style="color:var(--steel);text-transform:none;letter-spacing:0">(optional)</span></label>
+            <textarea id="qw-message" name="message" placeholder="Address, a photo you'll text, or any detail…"></textarea>
+          </div>
+          <div class="qwiz-nav">
+            <button type="button" class="qwiz-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Back</button>
+            <button type="submit" class="btn btn-primary qwiz-next">Get my free quote</button>
+          </div>
+        </div>
+
+        <!-- success -->
+        <div class="qwiz-done">
+          <div class="qw-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Got it — you're on the list.</h3>
+          <p>Chad will text you shortly about your quote. Need it sooner? Give us a call.</p>
+          <a href="tel:+13614602929" class="btn btn-primary qw-callnow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (361) 460-2929</a>
+        </div>
+
+        <p class="qwiz-foot">No obligation · Licensed Master Plumber RMP-43866 · <a href="tel:+13614602929">or just call</a></p>
       </form>
     </div>
   </div>
@@ -453,6 +508,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
 </a>
 
-<script src="main.js"></script>
+<script src="main.js?v=2"></script>
 </body>
 </html>

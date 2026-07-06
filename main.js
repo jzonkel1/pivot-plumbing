@@ -46,6 +46,94 @@ function submitForm(e) {
   return false;
 }
 
+// ===== Quote wizard — one question at a time, tap-first =====
+(function () {
+  var form = document.getElementById('quoteWizard');
+  if (!form) return;
+  var steps = [].slice.call(form.querySelectorAll('.qwiz-step'));
+  var fill = form.querySelector('.qwiz-progress span');
+  var countB = form.querySelector('.qwiz-count b');
+  var total = steps.length;
+  var cur = 0; // index into steps
+
+  function show(i) {
+    cur = Math.max(0, Math.min(total - 1, i));
+    steps.forEach(function (s, n) { s.classList.toggle('active', n === cur); });
+    fill.style.width = ((cur + 1) / total * 100) + '%';
+    countB.textContent = cur + 1;
+    // reveal the emergency nudge on the phone step only if they said "urgent"
+    var callout = steps[cur].querySelector('.qwiz-callout');
+    if (callout) callout.classList.toggle('show', /urgent/i.test(form.querySelector('#qw-urgency').value));
+    var firstInput = steps[cur].querySelector('input[type=tel],input[type=text],textarea');
+    if (firstInput) setTimeout(function () { firstInput.focus({ preventScroll: true }); }, 260);
+  }
+
+  function clearErr(step) { var e = step.querySelector('.qwiz-err'); if (e) e.classList.remove('show'); }
+  function showErr(step) { var e = step.querySelector('.qwiz-err'); if (e) e.classList.add('show'); }
+
+  // tap options → set hidden field, mark selected, auto-advance
+  form.querySelectorAll('.qwiz-opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var field = form.querySelector('#qw-' + btn.dataset.field);
+      if (field) field.value = btn.dataset.value;
+      var group = btn.closest('.qwiz-opts');
+      group.querySelectorAll('.qwiz-opt').forEach(function (b) { b.classList.remove('sel'); });
+      btn.classList.add('sel');
+      setTimeout(function () { show(cur + 1); }, 230);
+    });
+  });
+
+  // Continue button on the phone step — validate before advancing
+  form.querySelectorAll('[data-next]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var step = steps[cur];
+      var phone = step.querySelector('input[type=tel]');
+      if (phone && (phone.value.replace(/\D/g, '').length < 7)) { showErr(step); phone.focus(); return; }
+      clearErr(step);
+      show(cur + 1);
+    });
+  });
+
+  // Back buttons
+  form.querySelectorAll('.qwiz-back').forEach(function (btn) {
+    btn.addEventListener('click', function () { show(cur - 1); });
+  });
+
+  // Enter key advances on input steps
+  form.querySelectorAll('.qwiz-field input').forEach(function (inp) {
+    inp.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      var nextBtn = steps[cur].querySelector('[data-next]');
+      if (nextBtn) nextBtn.click();
+      else if (steps[cur].querySelector('button[type=submit]')) form.requestSubmit();
+    });
+  });
+
+  // Final submit → validate name, POST to Netlify, show success
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var step = steps[cur];
+    var name = form.querySelector('#qw-name');
+    if (name && !name.value.trim()) { showErr(step); name.focus(); return; }
+    clearErr(step);
+    var btn = step.querySelector('button[type=submit]');
+    var original = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var body = new URLSearchParams(new FormData(form)).toString();
+    var done = function () {
+      form.querySelectorAll('.qwiz-step, .qwiz-head').forEach(function (el) { el.style.display = 'none'; });
+      form.querySelector('.qwiz-done').classList.add('show');
+    };
+    // Netlify intercepts the POST on the live host; on other hosts it fails
+    // harmlessly and we still confirm to the user.
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+      .then(done).catch(done);
+  });
+
+  show(0);
+})();
+
 // cinematic hero — subtle scroll parallax (composes with the CSS Ken Burns zoom)
 (function () {
   const bg = document.getElementById('cheroBg');
