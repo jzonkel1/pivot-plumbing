@@ -107,6 +107,12 @@
 <section class="page-hero">
   <div class="faucet-deco" aria-hidden="true">
     <svg viewBox="0 0 220 210" fill="none">
+      <defs>
+        <linearGradient id="fdWater" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#aed8f4"/>
+          <stop offset="1" stop-color="#6fb3e8"/>
+        </linearGradient>
+      </defs>
       <g stroke="rgba(255,255,255,.34)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M212 44 V84"/>
         <path d="M212 60 H130 a32 32 0 0 0 -32 32 V102"/>
@@ -114,8 +120,25 @@
         <path d="M116 38 H144"/>
       </g>
       <path d="M86 102 H110" stroke="rgba(242,75,84,.72)" stroke-width="8" stroke-linecap="round"/>
-      <path class="fd-drop" d="M98 108 C92 116 92 122 98 122 C104 122 104 116 98 108 Z" fill="rgba(125,185,235,.92)"/>
-      <ellipse class="fd-ripple" cx="98" cy="184" rx="20" ry="5" fill="none" stroke="rgba(140,195,235,.85)" stroke-width="2.5"/>
+      <!-- drop forming at the spout mouth (grows, sags, snaps off) -->
+      <path class="fd-pend" d="M98 105 C92.5 113 91.5 119 98 120.5 C104.5 119 103.5 113 98 105 Z" fill="url(#fdWater)"/>
+      <!-- the falling drop -->
+      <g class="fd-drop">
+        <path d="M98 105 C92.5 113 91.5 119 98 120.5 C104.5 119 103.5 113 98 105 Z" fill="url(#fdWater)"/>
+        <circle cx="95.6" cy="113.5" r="1.7" fill="rgba(255,255,255,.85)"/>
+      </g>
+      <!-- impact splash droplets -->
+      <g fill="rgba(150,205,242,.95)">
+        <circle class="fd-sp fd-sp1" cx="97" cy="181" r="2.4"/>
+        <circle class="fd-sp fd-sp2" cx="99" cy="181" r="2"/>
+        <circle class="fd-sp fd-sp3" cx="96" cy="182" r="1.7"/>
+        <circle class="fd-sp fd-sp4" cx="100" cy="182" r="1.5"/>
+      </g>
+      <!-- puddle + expanding ripples -->
+      <ellipse class="fd-puddle" cx="98" cy="184" rx="15" ry="3.4" fill="rgba(125,185,235,.22)"/>
+      <ellipse class="fd-rip fd-rip1" cx="98" cy="184" rx="20" ry="5" stroke="rgba(140,195,235,.9)" stroke-width="2.5"/>
+      <ellipse class="fd-rip fd-rip2" cx="98" cy="184" rx="20" ry="5" stroke="rgba(140,195,235,.6)" stroke-width="2"/>
+      <ellipse class="fd-rip fd-rip3" cx="98" cy="184" rx="20" ry="5" stroke="rgba(140,195,235,.4)" stroke-width="1.6"/>
     </svg>
   </div>
   <div class="wrap">
