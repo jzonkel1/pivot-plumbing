@@ -589,7 +589,7 @@
   .pop-ov.open{display:flex;opacity:1}
   .pop{background:var(--white);border-radius:20px;max-width:460px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);transform:translateY(14px) scale(.98);transition:transform .3s;position:relative}
   .pop-ov.open .pop{transform:none}
-  .pop-head{background:var(--steel-deep);color:#fff;padding:26px 28px 22px;position:relative;overflow:hidden}
+  .pop-head{background:var(--steel-deep);color:#fff;padding:26px 28px 22px;position:relative;overflow:hidden;border-radius:20px 20px 0 0}
   .pop-head .eyebrow{color:var(--coral)}
   .pop-head h3{color:#fff;font-size:1.55rem;font-weight:800;letter-spacing:-.02em;margin-top:12px;line-height:1.06}
   .pop-head p{color:#c2c8d1;font-size:.95rem;margin-top:10px;max-width:34ch}
@@ -609,7 +609,12 @@
   .pop-note{font-family:var(--mono);font-size:.7rem;color:var(--steel);text-align:center;margin-top:12px}
   .pop-decline{display:block;width:100%;text-align:center;margin-top:8px;background:none;border:none;color:var(--steel);font-family:var(--body);font-size:.86rem;cursor:pointer;text-decoration:underline}
   .pop-decline:hover{color:var(--ink)}
-  @media(max-width:520px){.pop-ov{align-items:flex-end;padding:0}.pop{max-width:none;border-radius:18px 18px 0 0}}
+  @media(max-width:520px){
+    .pop-ov{padding:16px}
+    .pop{max-height:calc(100dvh - 32px);overflow-y:auto}
+    .pop-head{padding:22px 24px 18px}
+    .pop-body{padding:18px 24px 20px}
+  }
 
   /* ---------- BBB A+ rating badge (custom, honest — NOT the accredited seal) ---------- */
   .bbb-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(20,28,42,.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:8px 16px 8px 9px;transition:.2s;width:max-content}

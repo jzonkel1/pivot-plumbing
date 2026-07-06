@@ -108,10 +108,10 @@ function submitForm(e) {
           '<input type="hidden" name="form-name" value="popup-quote">' +
           '<p hidden aria-hidden="true" style="display:none"><label>Don\'t fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>' +
           '<div class="row2">' +
-            '<div class="field"><input type="text" name="name" required placeholder="Your name"></div>' +
-            '<div class="field"><input type="tel" name="phone" required placeholder="Phone number"></div>' +
+            '<div class="field"><input type="text" name="name" required autocomplete="name" aria-label="Your name" placeholder="Your name"></div>' +
+            '<div class="field"><input type="tel" name="phone" required autocomplete="tel" aria-label="Phone number" placeholder="Phone number"></div>' +
           '</div>' +
-          '<div class="field"><input type="text" name="issue" placeholder="What do you need? (optional)"></div>' +
+          '<div class="field"><input type="text" name="issue" aria-label="What do you need?" placeholder="What do you need? (optional)"></div>' +
           '<button type="submit" class="btn btn-primary">Request my free quote</button>' +
           '<p class="pop-note">We’ll call you back fast. No spam, ever.</p>' +
         '</form>' +

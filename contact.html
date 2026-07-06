@@ -173,14 +173,14 @@
         <h3>Request service</h3>
         <p class="sub">A licensed master plumber gets back to you fast — not a call center. No obligation. For emergencies, please call.</p>
         <div class="row2">
-          <div class="field"><label>Name</label><input type="text" name="name" required placeholder="Your name"></div>
-          <div class="field"><label>Phone</label><input type="tel" name="phone" required placeholder="(361) 000-0000"></div>
+          <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" name="name" required autocomplete="name" placeholder="Your name"></div>
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" type="tel" name="phone" required autocomplete="tel" placeholder="(361) 000-0000"></div>
         </div>
-        <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@email.com"></div>
+        <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
         <div class="row2">
           <div class="field">
-            <label>Service needed</label>
-            <select name="service">
+            <label for="c-service">Service needed</label>
+            <select id="c-service" name="service">
               <option>Residential repair</option>
               <option>Commercial repair</option>
               <option>Bathroom remodeling</option>
@@ -194,13 +194,13 @@
             </select>
           </div>
           <div class="field">
-            <label>City</label>
-            <select name="city">
+            <label for="c-city">City</label>
+            <select id="c-city" name="city">
               <option>Flour Bluff</option><option>Corpus Christi</option><option>Portland</option><option>South Padre Island</option><option>Other</option>
             </select>
           </div>
         </div>
-        <div class="field"><label>How can we help?</label><textarea name="message" placeholder="Briefly describe the issue…"></textarea></div>
+        <div class="field"><label for="c-message">How can we help?</label><textarea id="c-message" name="message" placeholder="Briefly describe the issue…"></textarea></div>
         <button type="submit" class="btn btn-primary">Request my free quote</button>
         <p class="form-note">No obligation. We'll never share your info.</p>
       </form>
