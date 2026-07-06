@@ -4,4 +4,9 @@ Allow: /
 # Keep the hidden Netlify form-definition page out of search results
 Disallow: /__forms.html
 
+# AI assistants and answer engines are welcome to read and cite this site
+# (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai,
+#  Google-Extended, Bingbot are all covered by the Allow above.)
+# Structured business facts for AI systems: https://pivotplumbing.biz/llms.txt
+
 Sitemap: https://pivotplumbing.biz/sitemap.xml
