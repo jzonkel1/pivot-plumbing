@@ -243,15 +243,12 @@
   .tcard .who b{font-weight:700;font-size:.96rem;display:block}
   .tcard .who span{font-family:var(--mono);font-size:.7rem;color:var(--steel);letter-spacing:.04em}
   .testi-grid .feat{grid-column:span 1;background:var(--steel-deep);color:#fff;border:none}
-  .testi-grid .feat p,.testi-duo .feat p{color:#eef0f3;font-size:1.08rem}
-  .testi-grid .feat .who b,.testi-duo .feat .who b{color:#fff}
+  .testi-grid .feat p{color:#eef0f3;font-size:1.08rem}
+  .testi-grid .feat .who b{color:#fff}
   @media(max-width:900px){.testi-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:600px){.testi-grid{grid-template-columns:1fr}}
   /* two-up review layout (home + about) */
   .testi-duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1000px;margin:0 auto}
-  .testi-duo .feat{background:var(--steel-deep);color:#fff;border:none}
-  .testi-duo .feat .av,.testi-grid .feat .av{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22)}
-  .testi-duo .feat .who span,.testi-grid .feat .who span{color:#98a1ad}
   @media(max-width:720px){.testi-duo{grid-template-columns:1fr;max-width:620px}}
 
   /* ---------- areas ---------- */
@@ -562,6 +559,16 @@
     .chero{min-height:86vh}
     .chero::after{background:linear-gradient(0deg,rgba(15,19,25,.9),rgba(15,19,25,.52))}
   }
+  /* tighter desktop hero — BBB + license badges stay above the fold */
+  @media(min-width:701px){
+    .chero{min-height:0}
+    .chero .wrap{padding-top:72px;padding-bottom:60px}
+    .chero h1{font-size:clamp(2.9rem,5vw,4.4rem)}
+    .chero p.lead{margin-top:18px}
+    .chero-cta{margin-top:26px}
+    .chero-trust{margin-top:26px}
+    .hero-badges{margin-top:20px}
+  }
 
   /* logo tweaks for the real hand-drawn mark */
   .brand .logo-img{height:50px}
@@ -662,8 +669,9 @@
      gravity (48–62%) → impact: squash, splash droplets & three
      staggered ripples while the next drop starts forming.
      ============================================================ */
-  .faucet-deco{position:absolute;top:50%;right:6%;transform:translateY(-50%);width:min(250px,34%);z-index:1;pointer-events:none}
-  .faucet-deco svg{width:100%;height:auto;display:block;overflow:visible}
+  .faucet-deco,.sketch-deco{position:absolute;top:50%;right:6%;transform:translateY(-50%);width:min(250px,34%);z-index:1;pointer-events:none}
+  .faucet-deco svg,.sketch-deco svg{width:100%;height:auto;display:block;overflow:visible}
+  .sketch-deco--wide{width:min(320px,40%)}
   /* hand-drawn "boil": swap between three turbulence seeds like redrawn frames */
   .fd-sketch{animation:fd-boil 1.1s steps(1) infinite}
   @keyframes fd-boil{
@@ -671,6 +679,14 @@
     33%{filter:url(#fdR2)}
     66%{filter:url(#fdR3)}
   }
+  /* gallery manifold: sparkle ticks that twinkle in turn ("super clean") */
+  .fd-shine{transform-box:fill-box;transform-origin:50% 50%;animation:fd-shine 4.2s ease-in-out infinite}
+  .fd-shine2{animation-delay:1.4s}.fd-shine3{animation-delay:2.8s}
+  @keyframes fd-shine{0%,100%{opacity:.15;transform:scale(.7)}18%{opacity:1;transform:scale(1.08)}36%{opacity:.15;transform:scale(.7)}}
+  /* about skyline: gulls drift slowly across the sky */
+  .fd-gull{animation:fd-gull 11s ease-in-out infinite}
+  .fd-gull2{animation-delay:3.5s}
+  @keyframes fd-gull{0%,100%{transform:translate(0,0);opacity:.7}50%{transform:translate(-14px,-5px);opacity:.35}}
   .fd-pend,.fd-drop,.fd-sp,.fd-rip,.fd-puddle{transform-box:fill-box;animation-duration:3.4s;animation-iteration-count:infinite;animation-timing-function:linear}
   /* drop forming at the spout — hangs from the mouth, wobbles as it grows, stretches, snaps */
   .fd-pend{transform-origin:50% 0;animation-name:fd-pend}
@@ -753,7 +769,7 @@
     100%{transform:scale(1);opacity:.5}
   }
   @media(prefers-reduced-motion:reduce){
-    .fd-pend,.fd-drop,.fd-sp,.fd-rip,.fd-puddle,.fd-sketch{animation:none}
+    .fd-pend,.fd-drop,.fd-sp,.fd-rip,.fd-puddle,.fd-sketch,.fd-shine,.fd-gull{animation:none}
     .fd-drop,.fd-sp,.fd-rip{opacity:0}
     .fd-pend{transform:scale(1)}
     .fd-puddle{opacity:.5}
@@ -761,7 +777,8 @@
   /* mobile: keep it — smaller, tucked top-right behind the hero text
      (text sits at z-index:2), same watermark treatment as .pivot-deco */
   @media(max-width:860px){
-    .faucet-deco{top:14px;right:8px;bottom:auto;transform:none;width:clamp(108px,28vw,150px);opacity:.8}
+    .faucet-deco,.sketch-deco{top:14px;right:8px;bottom:auto;transform:none;width:clamp(108px,28vw,150px);opacity:.8}
+    .sketch-deco--wide{width:clamp(130px,34vw,180px)}
   }
 
   /* ============================================================

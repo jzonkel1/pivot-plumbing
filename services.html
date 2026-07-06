@@ -103,10 +103,68 @@
 
 <!-- page hero -->
 <section class="page-hero">
-  <div class="pivot-deco" aria-hidden="true">
-    <svg class="spin" viewBox="0 0 200 200" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1">
-      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/>
-      <path d="M100 4v192M4 100h192M30 30l140 140M170 30 30 170" stroke="rgba(242,75,84,.4)"/>
+  <!-- hand-drawn "done right" stamp badge — ink-sketch style matching the logo -->
+  <div class="sketch-deco" aria-hidden="true">
+    <svg viewBox="0 0 220 200" fill="none">
+      <defs>
+        <filter id="fdR1" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="2"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.6"/>
+        </filter>
+        <filter id="fdR2" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="7"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.6"/>
+        </filter>
+        <filter id="fdR3" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="13"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.6"/>
+        </filter>
+      </defs>
+      <g class="fd-sketch" filter="url(#fdR1)">
+        <g stroke="rgba(255,255,255,.52)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- pipe, interrupted by the union nut -->
+          <path d="M12 118.5 C40 117.6 70 117.9 98 118.2"/>
+          <path d="M12 133.5 C40 134.4 70 134.1 98 133.8"/>
+          <path d="M136 118 C160 117.7 190 118 208 118.6"/>
+          <path d="M136 134 C160 134.3 190 134 208 133.4"/>
+          <path d="M12 118.5 C10.6 123 10.6 129 12 133.5"/>
+          <path d="M208 118.6 C209.4 123 209.4 129 208 133.4"/>
+          <!-- hex union nut -->
+          <path d="M100 112.5 C99.6 120 99.6 128 100.2 139.5"/>
+          <path d="M134 112.3 C134.4 120 134.4 128 133.8 139.7"/>
+          <path d="M100 112.5 C111 111.2 123 111.2 134 112.3"/>
+          <path d="M100.2 139.5 C111 140.8 123 140.8 133.8 139.7"/>
+          <!-- wrench shaft, coming in from the top right -->
+          <path d="M171 16 C154 38 139 60 127 80"/>
+          <path d="M179 21.5 C162 43 147 64 135 84"/>
+          <path d="M171 16 C173.5 15 176.5 17.5 179 21.5"/>
+          <!-- open-end jaw, gripping the nut -->
+          <path d="M127 80 C113 82.5 103 89 99.5 97 C98.4 100 98.6 103.5 100.2 106.5"/>
+          <path d="M135 84 C138.6 89.5 140 95.5 139.4 100.5 C139.1 102.6 138.6 104.6 137.8 106.4"/>
+          <path d="M100.2 106.5 C104.5 105 109.5 104.3 114 104.4"/>
+          <path d="M137.8 106.4 C133.5 105 128.5 104.3 124 104.4"/>
+          <path d="M114 104.4 C115.5 99.2 122.5 99.2 124 104.4"/>
+        </g>
+        <!-- nut facet lines + coupling ring -->
+        <g stroke="rgba(255,255,255,.36)" stroke-width="2" stroke-linecap="round">
+          <path d="M111.5 112 C111.2 121 111.2 130 111.6 140"/>
+          <path d="M122.5 111.8 C122.8 121 122.8 130 122.4 139.8"/>
+          <path d="M52 117.8 C50.8 122 50.8 130 52.2 134.2 M58.5 117.6 C57.3 122 57.3 130.2 58.7 134.4"/>
+        </g>
+        <!-- torque ticks — the turn that snugs it up -->
+        <g stroke="rgba(255,255,255,.45)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M88 78 C85.5 73 84.5 68 85.5 63"/>
+          <path d="M78 91 C74.5 86.5 72.5 81 73 75.5"/>
+        </g>
+        <!-- coral grip band on the shaft -->
+        <path d="M163.5 30.5 C168.5 24.5 174 26.5 178.5 31.5 C176.5 34.8 174.5 37.8 172 40.5 C168 37.5 165.5 34 163.5 30.5 Z" fill="rgba(242,75,84,.78)" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linejoin="round"/>
+        <!-- hatch shading -->
+        <g stroke="rgba(255,255,255,.26)" stroke-width="1.7" stroke-linecap="round">
+          <path d="M28 132.5 L32.5 126.5 M37 132.8 L41.5 126.8 M152 132.5 L156.5 126.5 M161 132.8 L165.5 126.8 M170 132.6 L174 127.2"/>
+          <path d="M103 132 L108 128 M103 125.5 L107.5 121.5"/>
+          <path d="M104 92 L110 88 M102 98 L108 94.5"/>
+        </g>
+      </g>
     </svg>
   </div>
   <div class="wrap">
@@ -226,6 +284,7 @@
 
 <!-- cta -->
 <section class="cta pad">
+  <img class="wrench-deco" src="brand-wrench-white.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="cta-copy reveal">
       <span class="eyebrow">Get on the schedule</span>

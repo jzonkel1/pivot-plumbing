@@ -103,10 +103,63 @@
 
 <!-- page hero -->
 <section class="page-hero">
-  <div class="pivot-deco" aria-hidden="true">
-    <svg class="spin" viewBox="0 0 200 200" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1">
-      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/>
-      <path d="M100 4v192M4 100h192M30 30l140 140M170 30 30 170" stroke="rgba(242,75,84,.4)"/>
+  <!-- hand-drawn clean pipe manifold — joined tight, no leaks, ink-sketch style -->
+  <div class="sketch-deco sketch-deco--wide" aria-hidden="true">
+    <svg viewBox="0 0 240 200" fill="none">
+      <defs>
+        <filter id="fdR1" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="2"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.6"/>
+        </filter>
+        <filter id="fdR2" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="7"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.6"/>
+        </filter>
+        <filter id="fdR3" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="13"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.6"/>
+        </filter>
+      </defs>
+      <g class="fd-sketch" filter="url(#fdR1)">
+        <g stroke="rgba(255,255,255,.52)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- main run -->
+          <path d="M16 96.5 C50 95.4 90 95.8 130 96.2 C165 96.5 200 96 224 96.8"/>
+          <path d="M16 111.5 C50 112.6 92 112.2 132 111.8 C166 111.5 200 112 224 111.2"/>
+          <path d="M16 96.5 C14.5 101 14.5 107 16 111.5"/>
+          <!-- right end flange -->
+          <path d="M218 95 C216.8 100 216.8 108 218.2 113"/>
+          <path d="M224.5 94.2 C223.3 100 223.3 108.5 224.7 113.8"/>
+          <!-- tee up to a capped flange -->
+          <path d="M69 96 C68.6 82 68.8 66 69.4 52"/>
+          <path d="M84 96 C84.4 82 84.2 66 83.6 52"/>
+          <path d="M62 45.5 C71 44 81 44 90.5 45.3"/>
+          <path d="M60.5 51.5 C70 49.8 82 49.8 92.5 51.2"/>
+          <!-- valve stem -->
+          <path d="M153 96 C152.8 91 153 86.5 153.4 83"/>
+          <path d="M163 96 C163.2 91 163 86.5 162.6 83"/>
+        </g>
+        <!-- fitting seams & coupling rings -->
+        <g stroke="rgba(255,255,255,.4)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M66 93.5 L87 93.2"/>
+          <path d="M68.2 64.5 C67.6 68 67.6 73 68.4 76.5 M85 64.3 C85.6 68 85.6 73 84.8 76.4"/>
+          <path d="M47 95.8 C45.8 100 45.8 107 47.2 112 M53.5 95.6 C52.3 100 52.3 107.5 53.7 112.2"/>
+          <path d="M194 96 C192.8 100 192.8 107 194.2 111.6 M200.5 95.8 C199.3 100 199.3 107 200.7 111.4"/>
+        </g>
+        <!-- coral valve handwheel -->
+        <path d="M141.5 80 C143 74.5 152 71.8 158.5 72 C165 72.2 173 75 174.3 79.6 C173 84 164 86.6 157.5 86.4 C151 86.2 143.5 84 141.5 80 Z" fill="rgba(242,75,84,.78)" stroke="rgba(255,255,255,.55)" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M150 78.4 L155 82 M160 76.8 L164.5 80.4" stroke="rgba(120,22,30,.55)" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- hatch shading -->
+        <g stroke="rgba(255,255,255,.26)" stroke-width="1.7" stroke-linecap="round">
+          <path d="M28 110.5 L32.5 104.5 M37 110.8 L41.5 104.8 M100 110.5 L104.5 104.5 M110 110.8 L114.5 104.8 M120 110.6 L124.5 104.6 M176 110.5 L180.5 104.5 M185 110.8 L189.5 104.8"/>
+          <path d="M70.5 60 L76.5 56 M70.8 66.5 L76.8 62.5"/>
+        </g>
+      </g>
+      <!-- sparkle ticks — "super clean" (twinkle in turn) -->
+      <g stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round">
+        <path class="fd-shine fd-shine1" d="M104 69 C104.2 74 104.2 79 104 83 M97 76 C101.5 76.2 106.5 76.2 110.5 76"/>
+        <path class="fd-shine fd-shine2" d="M183 58 C183.2 62 183.2 66 183 69.5 M177.5 63.8 C181 64 185 64 188.5 63.8"/>
+        <path class="fd-shine fd-shine3" d="M36 76.5 C36.2 80 36.2 83.5 36 86.5 M31.5 81.5 C34.5 81.7 38 81.7 40.5 81.5"/>
+      </g>
     </svg>
   </div>
   <div class="wrap">
