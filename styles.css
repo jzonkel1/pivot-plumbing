@@ -986,3 +986,47 @@
     footer .foot-social{justify-content:center}
     footer .foot-bottom{justify-content:center;text-align:center}
   }
+
+  /* ---------- footer legal links ---------- */
+  .foot-legal{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.76rem}
+  .foot-legal a{color:#9aa3b0;transition:color .18s}
+  .foot-legal a:hover{color:var(--coral)}
+  .foot-legal .sep{color:#5a6472}
+
+  /* ---------- form consent / TCPA note ---------- */
+  .consent-note{font-family:var(--body);font-size:.72rem;line-height:1.55;margin-top:14px;color:#8b94a3}
+  .consent-note a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+  .consent-note a:hover{color:var(--coral)}
+  .qwiz .consent-note{color:#7c8492;margin-top:16px;text-align:left}
+
+  /* ---------- legal / prose pages ---------- */
+  .legal-doc{max-width:820px;margin:0 auto}
+  .legal-doc h1{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,5vw,3.1rem);letter-spacing:-.02em;margin-top:14px;color:var(--ink)}
+  .legal-updated{font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:#6b7482;margin-top:14px}
+  .legal-doc .lead{font-size:1.1rem;color:#414a57;margin-top:22px;line-height:1.65}
+  .legal-doc h2{font-family:var(--display);font-weight:800;font-size:1.4rem;margin-top:42px;color:var(--ink);letter-spacing:-.01em}
+  .legal-doc h3{font-family:var(--display);font-weight:700;font-size:1.08rem;margin-top:26px;color:var(--ink)}
+  .legal-doc p{color:#414a57;line-height:1.72;margin-top:13px}
+  .legal-doc ul{margin-top:13px;padding-left:20px}
+  .legal-doc li{color:#414a57;line-height:1.68;margin-top:8px}
+  .legal-doc a{color:var(--coral-deep);text-decoration:underline;text-underline-offset:2px}
+  .legal-doc a:hover{color:var(--coral)}
+  .legal-doc strong{color:var(--ink);font-weight:700}
+  .legal-callout{margin-top:26px;padding:16px 20px;border-left:3px solid var(--coral);background:rgba(242,75,84,.06);border-radius:0 10px 10px 0;font-size:.94rem;color:#4a5260}
+
+  /* ---------- review gate ---------- */
+  .rev-choices{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:38px;max-width:920px;margin-left:auto;margin-right:auto;align-items:stretch}
+  .rev-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 30px;display:flex;flex-direction:column;box-shadow:0 24px 46px -28px rgba(20,28,42,.35)}
+  .rev-ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--paper-warm)}
+  .rev-card h2{font-family:var(--display);font-weight:800;font-size:1.4rem;margin-top:18px;color:var(--ink)}
+  .rev-stars{color:#f5a623;font-size:1.15rem;letter-spacing:3px;margin-top:8px}
+  .rev-card p{color:#4a5260;line-height:1.62;margin-top:12px}
+  .rev-card .btn{margin-top:22px;width:100%;justify-content:center}
+  .rev-spacer{flex:1}
+  .rev-field{margin-top:12px}
+  .rev-field textarea,.rev-field input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;font-family:var(--body);font-size:.98rem;background:var(--paper);color:var(--ink)}
+  .rev-field textarea{min-height:92px;resize:vertical}
+  .rev-done{display:none;text-align:center;padding:20px 0}
+  .rev-done.show{display:block}
+  .leave-review-cta{text-align:center;margin-top:30px}
+  @media(max-width:720px){.rev-choices{grid-template-columns:1fr}}
