@@ -281,3 +281,31 @@ function submitForm(e) {
     else if (e.key === 'ArrowRight') show(idx + 1);
   });
 })();
+
+// before/after slider (gallery)
+(function () {
+  const ba = document.querySelector('.ba');
+  if (!ba) return;
+  const knob = ba.querySelector('.ba-knob');
+  const clamp = p => Math.max(0, Math.min(100, p));
+  function set(p) { p = clamp(p); ba.style.setProperty('--pos', p + '%'); if (knob) knob.setAttribute('aria-valuenow', Math.round(p)); }
+  function posFromEvent(e) { const r = ba.getBoundingClientRect(); return ((e.clientX - r.left) / r.width) * 100; }
+  let dragging = false;
+  ba.addEventListener('pointerdown', e => { dragging = true; ba.setPointerCapture(e.pointerId); set(posFromEvent(e)); });
+  ba.addEventListener('pointermove', e => { if (!dragging) return; set(posFromEvent(e)); if (e.cancelable) e.preventDefault(); });
+  ba.addEventListener('pointerup', () => { dragging = false; });
+  ba.addEventListener('pointercancel', () => { dragging = false; });
+  if (knob) {
+    knob.tabIndex = 0;
+    knob.setAttribute('role', 'slider');
+    knob.setAttribute('aria-label', 'Reveal before and after');
+    knob.setAttribute('aria-valuemin', '0');
+    knob.setAttribute('aria-valuemax', '100');
+    knob.setAttribute('aria-valuenow', '80');
+    knob.addEventListener('keydown', e => {
+      const cur = parseFloat(ba.style.getPropertyValue('--pos')) || 80;
+      if (e.key === 'ArrowLeft') { set(cur - 4); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { set(cur + 4); e.preventDefault(); }
+    });
+  }
+})();

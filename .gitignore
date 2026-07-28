@@ -1,5 +1,7 @@
 # Source assets, raw phone photos, and Google Drive archives — NOT part of the deploy
 _source/
+images/pivot/
+images/pivot.zip
 
 # OS / editor cruft
 .DS_Store
